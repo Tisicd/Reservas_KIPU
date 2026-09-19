@@ -38,10 +38,10 @@ export default function BotonEstadoReserva({ reservaId, accion }: Props) {
     <button
       onClick={handleClick}
       disabled={loading}
-      className={`text-xs font-medium disabled:opacity-50 ${
+      className={`text-xs font-medium disabled:opacity-50 hover:underline transition-all ${
         accion === "aprobar"
-          ? "text-emerald-600 hover:text-emerald-800"
-          : "text-red-600 hover:text-red-800"
+          ? "text-success-500 hover:text-success-600"
+          : "text-error-500 hover:text-red-700"
       }`}
     >
       {loading ? "..." : accion === "aprobar" ? "Aprobar" : "Rechazar"}

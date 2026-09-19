@@ -37,6 +37,13 @@ npm run dev
 
 Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
+### Túnel público (ngrok)
+
+```bash
+npm run dev       # primero inicia el servidor
+ngrok http 3000   # en otra terminal, expone localhost:3000
+```
+
 ## Configuración
 
 Copia `.env.local` y ajusta las variables:

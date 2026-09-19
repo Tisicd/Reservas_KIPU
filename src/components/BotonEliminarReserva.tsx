@@ -30,7 +30,7 @@ export default function BotonEliminarReserva({ reservaId }: Props) {
     <button
       onClick={handleDelete}
       disabled={loading}
-      className="text-red-600 hover:text-red-800 text-xs font-medium disabled:opacity-50"
+      className="text-error-500 hover:text-red-700 text-xs font-medium disabled:opacity-50 hover:underline transition-all"
     >
       {loading ? "..." : "Eliminar"}
     </button>

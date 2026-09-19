@@ -39,28 +39,28 @@ function LoginForm() {
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4">
-      <div className="card p-8 w-full max-w-sm">
+      <div className="card p-8 w-full max-w-sm animate-fade-in-up">
         <div className="text-center mb-6">
-          <span className="text-4xl mb-3 block">🔐</span>
-          <h1 className="text-xl font-bold text-stone-900">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-50 flex items-center justify-center">
+            <img src="/logo-kipu.png" alt="Kipu" className="w-10 h-10 object-contain" />
+          </div>
+          <h1 className="font-display text-xl font-bold text-warm-900">
             Administración
           </h1>
-          <p className="text-sm text-stone-500 mt-1">
+          <p className="text-sm text-warm-500 mt-1">
             Ingresa la contraseña para continuar
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+            <div className="bg-error-50 border border-red-200 text-error-500 px-4 py-3 rounded-xl text-sm">
               {error}
             </div>
           )}
 
           <div>
-            <label htmlFor="password" className="label-field">
-              Contraseña
-            </label>
+            <label htmlFor="password" className="label-field">Contraseña</label>
             <input
               id="password"
               type="password"
@@ -73,11 +73,7 @@ function LoginForm() {
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn-primary w-full"
-          >
+          <button type="submit" disabled={loading} className="btn-primary w-full">
             {loading ? "Verificando..." : "Ingresar"}
           </button>
         </form>
@@ -90,7 +86,7 @@ export default function AdminLoginPage() {
   return (
     <Suspense fallback={
       <div className="min-h-[70vh] flex items-center justify-center">
-        <p className="text-stone-500">Cargando...</p>
+        <p className="text-warm-400 animate-pulse-subtle">Cargando...</p>
       </div>
     }>
       <LoginForm />

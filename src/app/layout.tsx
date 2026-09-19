@@ -1,50 +1,47 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Link from "next/link";
+import SplashScreen from "@/components/SplashScreen";
+import HeaderPublico from "@/components/HeaderPublico";
 
 export const metadata: Metadata = {
-  title: "Reservas Tziwu — Intercambios Culturales",
-  description: "Sistema de reservas para eventos de intercambio cultural",
+  title: "Kipu — Intercambios Culturales",
+  description: "Conectando culturas, creando experiencias. Reserva tu lugar en nuestros eventos de intercambio cultural.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
-      <body className="min-h-screen flex flex-col">
-        <header className="bg-white border-b border-stone-200 sticky top-0 z-50">
-          <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 group">
-              <span className="text-2xl">🌍</span>
-              <div>
-                <span className="font-bold text-lg text-violet-700 group-hover:text-violet-800">
-                  Tziwu
-                </span>
-                <span className="hidden sm:inline text-stone-500 text-sm ml-2">
-                  Intercambios Culturales
-                </span>
-              </div>
-            </Link>
-            <nav className="flex items-center gap-1 sm:gap-3">
-              <Link
-                href="/"
-                className="px-3 py-2 text-sm font-medium text-stone-600 hover:text-violet-700 rounded-lg hover:bg-violet-50 transition-colors"
-              >
-                Eventos
-              </Link>
-            </nav>
-          </div>
-        </header>
-        <main className="flex-1">{children}</main>
-        <footer className="bg-white border-t border-stone-200 py-6 mt-auto">
-          <div className="max-w-5xl mx-auto px-4 text-center text-sm text-stone-500">
-            © {new Date().getFullYear()} Tziwu — Intercambios Culturales
-          </div>
-        </footer>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+      </head>
+      <body className="min-h-screen flex flex-col" style={{ background: "#F5F0E8" }}>
+        <SplashScreen>
+          <HeaderPublico />
+          <main className="flex-1">{children}</main>
+          <FooterPublico />
+        </SplashScreen>
       </body>
     </html>
+  );
+}
+
+function FooterPublico() {
+  return (
+    <footer style={{ background: "#1E1812", borderTop: "1px solid #3D2E1E" }} className="py-10">
+      <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="flex items-center justify-center gap-4 mb-5">
+          <span className="h-px w-12" style={{ background: "linear-gradient(90deg, transparent, rgba(212,160,23,0.4))" }} />
+          <img src="/logo-kipu.png" alt="KIPU" className="w-7 h-7 object-contain opacity-75" />
+          <span className="h-px w-12" style={{ background: "linear-gradient(90deg, rgba(212,160,23,0.4), transparent)" }} />
+        </div>
+        <p className="font-hand text-xl mb-1" style={{ color: "#D4A017" }}>Cultura, comunidad y el idioma del corazón</p>
+        <p className="text-xs mt-3" style={{ color: "#A89880", fontFamily: "'Montserrat', sans-serif" }}>@kipu_languagehub</p>
+        <p className="text-xs mt-1" style={{ color: "#6E5F4C" }}>
+          © {new Date().getFullYear()} Kipu — Intercambios Culturales
+        </p>
+      </div>
+    </footer>
   );
 }
